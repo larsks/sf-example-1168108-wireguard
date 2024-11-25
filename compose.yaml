@@ -1,0 +1,25 @@
+services:
+  vm1:
+    image: docker.io/alpine:latest
+    cap_add:
+    - NET_ADMIN
+    init: true
+    volumes:
+    - .:/src
+    command:
+    - sh
+    - /src/setup-wg.sh
+    ports:
+    - 9735:9735
+    hostname: vm1
+  vm2:
+    image: docker.io/alpine:latest
+    cap_add:
+    - NET_ADMIN
+    init: true
+    volumes:
+    - .:/src
+    command:
+    - sh
+    - /src/setup-wg.sh
+    hostname: vm2
